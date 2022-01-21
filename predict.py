@@ -1,4 +1,6 @@
 import torch
+import requests
+from io import BytesIO
 
 from keras.preprocessing.image import load_img, img_to_array                    # To load image into memory and to convert image to numpy array
 from keras.preprocessing.sequence import pad_sequences    
@@ -11,7 +13,7 @@ from datasets import coco, utils
 from configuration import Config
 import os
 import numpy as np
-import matplotlib.pyplot as plt                                                 # To display images
+import matplotlib.pyplot as plt # To display images
 # %matplotlib inline
 
 parser = argparse.ArgumentParser(description='Image Captioning')
@@ -48,8 +50,12 @@ tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 start_token = tokenizer.convert_tokens_to_ids(tokenizer._cls_token)
 end_token = tokenizer.convert_tokens_to_ids(tokenizer._sep_token)
 
-image = Image.open(image_path)
-ImDisp(image_path)
+if image_path.startswith('http'):
+    response = requests.get(url)
+    image = Image.open(BytesIO(response.content))
+else:
+    image = Image.open(image_path)
+
 image = coco.val_transform(image)
 image = image.unsqueeze(0)
 
