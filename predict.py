@@ -80,8 +80,21 @@ def evaluate():
 
     return caption
 
+class color:
+   PURPLE = '\033[95m'
+   CYAN = '\033[96m'
+   DARKCYAN = '\033[36m'
+   BLUE = '\033[94m'
+   GREEN = '\033[92m'
+   YELLOW = '\033[93m'
+   RED = '\033[91m'
+   BOLD = '\033[1m'
+   UNDERLINE = '\033[4m'
+   END = '\033[0m'
+
+# print(color.BOLD + 'Hello World !' + color.END)
 
 output = evaluate()
 result = tokenizer.decode(output[0].tolist(), skip_special_tokens=True)
 #result = tokenizer.decode(output[0], skip_special_tokens=True)
-print(result.capitalize())
+print("\n\n\n"+color.BOLD+ result.capitalize()+ color.END)
