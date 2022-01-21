@@ -1,5 +1,7 @@
 import torch
 
+from keras.preprocessing.image import load_img, img_to_array                    # To load image into memory and to convert image to numpy array
+from keras.preprocessing.sequence import pad_sequences    
 from transformers import BertTokenizer
 from PIL import Image
 import argparse
