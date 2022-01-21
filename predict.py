@@ -3,7 +3,7 @@ import torch
 from transformers import BertTokenizer
 from PIL import Image
 import argparse
-import IPython.display as display
+from IPython.display import Image as ImDisp
 from models import caption
 from datasets import coco, utils
 from configuration import Config
@@ -44,7 +44,7 @@ start_token = tokenizer.convert_tokens_to_ids(tokenizer._cls_token)
 end_token = tokenizer.convert_tokens_to_ids(tokenizer._sep_token)
 
 image = Image.open(image_path)
-
+ImDisp(image_path)
 image = coco.val_transform(image)
 image = image.unsqueeze(0)
 
