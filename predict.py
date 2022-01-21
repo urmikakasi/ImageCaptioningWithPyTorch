@@ -44,8 +44,10 @@ start_token = tokenizer.convert_tokens_to_ids(tokenizer._cls_token)
 end_token = tokenizer.convert_tokens_to_ids(tokenizer._sep_token)
 
 image = Image.open(image_path)
+image.show()
 image = coco.val_transform(image)
 image = image.unsqueeze(0)
+
 
 
 def create_caption_and_mask(start_token, max_length):
