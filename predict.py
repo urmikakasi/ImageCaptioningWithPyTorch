@@ -51,7 +51,7 @@ start_token = tokenizer.convert_tokens_to_ids(tokenizer._cls_token)
 end_token = tokenizer.convert_tokens_to_ids(tokenizer._sep_token)
 
 if image_path.startswith('http'):
-    response = requests.get(url)
+    response = requests.get(image_path)
     image = Image.open(BytesIO(response.content))
 else:
     image = Image.open(image_path)
