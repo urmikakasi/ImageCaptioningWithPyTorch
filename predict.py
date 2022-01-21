@@ -10,7 +10,7 @@ from configuration import Config
 import os
 import numpy as np
 import matplotlib.pyplot as plt                                                 # To display images
-%matplotlib inline
+# %matplotlib inline
 
 parser = argparse.ArgumentParser(description='Image Captioning')
 parser.add_argument('--path', type=str, help='path to image', required=True)
