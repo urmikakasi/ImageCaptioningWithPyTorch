@@ -3,7 +3,7 @@ import torch
 from transformers import BertTokenizer
 from PIL import Image
 import argparse
-
+import IPython.display as display
 from models import caption
 from datasets import coco, utils
 from configuration import Config
