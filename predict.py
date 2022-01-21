@@ -107,28 +107,6 @@ result = tokenizer.decode(output[0].tolist(), skip_special_tokens=True)
 #result = tokenizer.decode(output[0], skip_special_tokens=True)
 print("\n\n\n"+color.BOLD+ result.capitalize()+ color.END)
 
-def view_img_caption_pair():
-  '''
-  Given the model's path, image's path and tokenizer's path
-  it generates a caption for the provided image and displays
-  the same with the original image.
-  '''
-  text = result
-  im  = np.array(load_img(image_path))
-  fig, ax = plt.subplots(1, 2, figsize = (10,10))
+return result
 
-  # Display the image
-  ax[0].imshow(im)
-  ax[0].axis('off')
-  ax[0].set_title('Image', fontsize = 15)
-
-  # Display caption beside the image
-  props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
-  ax[1].set_xlim([0,0.5])
-  ax[1].set_ylim([0,0.5])
-  ax[1].text(0, 0.45, text, transform=ax[1].transAxes, fontsize=20,
-        verticalalignment='center', bbox=props)
-  ax[1].axis('off');
-
-view_img_caption_pair()
  
