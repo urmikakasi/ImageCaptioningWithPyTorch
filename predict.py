@@ -45,7 +45,7 @@ end_token = tokenizer.convert_tokens_to_ids(tokenizer._sep_token)
 
 image = Image.open(image_path)
 image.show()
-display(image)
+display.display(image)
 image = coco.val_transform(image)
 image = image.unsqueeze(0)
 
