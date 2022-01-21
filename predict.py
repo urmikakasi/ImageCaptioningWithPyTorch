@@ -106,7 +106,6 @@ def fin():
     output = evaluate()
     result = tokenizer.decode(output[0].tolist(), skip_special_tokens=True)
     #result = tokenizer.decode(output[0], skip_special_tokens=True)
-    print("\n\n\n"+color.BOLD+ result.capitalize()+ color.END)
 
     return result
 
