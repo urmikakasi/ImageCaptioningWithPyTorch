@@ -21,6 +21,7 @@ parser.add_argument('--path', type=str, help='path to image', required=True)
 parser.add_argument('--v', type=str, help='version', default='v3')
 parser.add_argument('--checkpoint', type=str, help='checkpoint path', default=None)
 args = parser.parse_args()
+image_path= "http://farm7.staticflickr.com/6127/6035542977_ddab138368_z.jpg"
 image_path = args.path
 version = args.v
 checkpoint_path = args.checkpoint
