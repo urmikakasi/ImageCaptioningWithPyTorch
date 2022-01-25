@@ -29,11 +29,11 @@ checkpoint_path = args.checkpoint
 config = Config()
 
 if version == 'v1':
-    model = torch.hub.load('saahiluppal/catr', 'v1', pretrained=True)
+    model = torch.hub.load('urmikakasi/ImageCaptioningWithPyTorch', 'v1', pretrained=True)
 elif version == 'v2':
-    model = torch.hub.load('saahiluppal/catr', 'v2', pretrained=True)
+    model = torch.hub.load('urmikakasi/ImageCaptioningWithPyTorch', 'v2', pretrained=True)
 elif version == 'v3':
-    model = torch.hub.load('saahiluppal/catr', 'v3', pretrained=True)
+    model = torch.hub.load('urmikakasi/ImageCaptioningWithPyTorch', 'v3', pretrained=True)
 else:
     print("Checking for checkpoint.")
     if checkpoint_path is None:
