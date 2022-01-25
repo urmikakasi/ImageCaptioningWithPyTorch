@@ -82,6 +82,7 @@ def evaluate():
     for i in range(config.max_position_embeddings - 1):
         predictions = model(image, caption, cap_mask)
         predictions = predictions[:, i, :]
+        print(predictions)
         predicted_id = torch.argmax(predictions, axis=-1)
 
         if predicted_id[0] == 102:
