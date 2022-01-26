@@ -94,11 +94,11 @@ def evaluate():
         caption2, cap_mask2 = create_caption_and_mask(start_token, config.max_position_embeddings)
         caption3, cap_mask3 = create_caption_and_mask(start_token, config.max_position_embeddings)
         
-        caption1[:, i+1] = predicted_id_mult[0]
+        caption1[:, i+1] = predicted_id_mult.values[0]
         cap_mask1[:, i+1] = False
-        caption2[:, i+1] = predicted_id_mult[1]
+        caption2[:, i+1] = predicted_id_mult.values[1]
         cap_mask2[:, i+1] = False
-        caption3[:, i+1] = predicted_id_mult[2]
+        caption3[:, i+1] = predicted_id_mult.values[2]
         cap_mask3[:, i+1] = False
         
         caption[:, i+1] = predicted_id[0]
