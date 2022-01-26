@@ -128,17 +128,17 @@ class color:
 def fin():
     
     output = evaluate()
-    '''ORIG
+    
     result = tokenizer.decode(output[0].tolist(), skip_special_tokens=True)
     #result = tokenizer.decode(output[0], skip_special_tokens=True)
     print(result)
     return result
     
     #END ORIG
-    '''
-    result_mult=[]
-    for i in range (0,3):
-        result_mult[i]= tokenizer.decode(output[i].tolist(), skip_special_tokens=True)
-    return result_mult
+    
+#     result_mult=[]
+#     for i in range (0,3):
+#         result_mult[i]= tokenizer.decode(output[i].tolist(), skip_special_tokens=True)
+#     return result_mult
 
 fin() 
