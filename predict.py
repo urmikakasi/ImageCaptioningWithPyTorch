@@ -83,15 +83,31 @@ def evaluate():
         predictions = model(image, caption, cap_mask)
         predictions = predictions[:, i, :]
         print(predictions)
-        predicted_id = torch.argmax(predictions, axis=-1)
-
+        predicted_id = torch.argmax(predictions, axis=-1) # to get top prediction
+        #mod for top 5 captions
+        predicted_id_mult= torch.topk(predictions, 3)
+        print(predicted_id_mult)
         if predicted_id[0] == 102:
             return caption
-
+        
+        caption1, cap_mask1 = create_caption_and_mask(start_token, config.max_position_embeddings)
+        caption2, cap_mask2 = create_caption_and_mask(start_token, config.max_position_embeddings)
+        caption3, cap_mask3 = create_caption_and_mask(start_token, config.max_position_embeddings)
+        
+        caption1[:, i+1] = predicted_id_mult[0]
+        cap_mask1[:, i+1] = False
+        caption2[:, i+1] = predicted_id_mult[1]
+        cap_mask2[:, i+1] = False
+        caption3[:, i+1] = predicted_id_mult[2]
+        cap_mask3[:, i+1] = False
+        
         caption[:, i+1] = predicted_id[0]
         cap_mask[:, i+1] = False
+        
+        caption_mult= [caption1, caption2, caption3]
 
-    return caption
+
+    return caption_mult
 
 
 
@@ -112,9 +128,17 @@ class color:
 def fin():
     
     output = evaluate()
+    '''ORIG
     result = tokenizer.decode(output[0].tolist(), skip_special_tokens=True)
     #result = tokenizer.decode(output[0], skip_special_tokens=True)
     print(result)
     return result
+    
+    #END ORIG
+    '''
+    result_mult=[]
+    for i in range (0,3):
+        result_mult[i]= tokenizer.decode(output[i].tolist(), skip_special_tokens=True)
+    return result_mult
 
 fin() 
