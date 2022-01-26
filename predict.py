@@ -85,29 +85,29 @@ def evaluate():
         print(predictions)
         predicted_id = torch.argmax(predictions, axis=-1) # to get top prediction
         #mod for top 5 captions
-        predicted_id_mult= torch.topk(predictions, 3)
-        print(predicted_id_mult)
+#         predicted_id_mult= torch.topk(predictions, 3)
+#         print(predicted_id_mult)
         if predicted_id[0] == 102:
             return caption
         
-        caption1, cap_mask1 = create_caption_and_mask(start_token, config.max_position_embeddings)
-        caption2, cap_mask2 = create_caption_and_mask(start_token, config.max_position_embeddings)
-        caption3, cap_mask3 = create_caption_and_mask(start_token, config.max_position_embeddings)
+#         caption1, cap_mask1 = create_caption_and_mask(start_token, config.max_position_embeddings)
+#         caption2, cap_mask2 = create_caption_and_mask(start_token, config.max_position_embeddings)
+#         caption3, cap_mask3 = create_caption_and_mask(start_token, config.max_position_embeddings)
         
-        caption1[:, i+1] = predicted_id_mult.values[0]
-        cap_mask1[:, i+1] = False
-        caption2[:, i+1] = predicted_id_mult.values[1]
-        cap_mask2[:, i+1] = False
-        caption3[:, i+1] = predicted_id_mult.values[2]
-        cap_mask3[:, i+1] = False
+#         caption1[:, i+1] = predicted_id_mult.values[0]
+#         cap_mask1[:, i+1] = False
+#         caption2[:, i+1] = predicted_id_mult.values[1]
+#         cap_mask2[:, i+1] = False
+#         caption3[:, i+1] = predicted_id_mult.values[2]
+#         cap_mask3[:, i+1] = False
         
         caption[:, i+1] = predicted_id[0]
         cap_mask[:, i+1] = False
         
-        caption_mult= [caption1, caption2, caption3]
+#         caption_mult= [caption1, caption2, caption3]
 
 
-    return caption_mult
+    return caption
 
 
 
