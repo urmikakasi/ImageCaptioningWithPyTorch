@@ -87,6 +87,7 @@ def evaluate():
         #mod for top 5 captions
 #         predicted_id_mult= torch.topk(predictions, 3)
 #         print(predicted_id_mult)
+        print(predicted_id)
         if predicted_id[0] == 102:
             return caption
         
